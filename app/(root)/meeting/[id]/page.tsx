@@ -14,6 +14,12 @@ import MeetingRoom from '@/components/MeetingRoom';
 const MeetingPage = () => {
   const { id } = useParams();
   const { isLoaded, user } = useUser();
+  
+  // Check if id is defined before using it
+  if (!id) {
+    return <p className="text-center text-3xl font-bold text-white">Meeting ID is missing</p>;
+  }
+
   const { call, isCallLoading } = useGetCallById(id);
   const [isSetupComplete, setIsSetupComplete] = useState(false);
 
